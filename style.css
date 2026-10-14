@@ -9,13 +9,14 @@
 /*Design Tokens*/
 
 :root {
-    --bg: #faf6f1;
-    --ink: #241a14;
-    --ink-soft: #6b5c50;
-    --ember: #A52A2A;
-    --clay: #a82a5c;
-    --line: #e5dcd2;
-    --font-body: system-u, -apple-system, "Segoe UI", sans-serif;
+    --bg: #f3f8f4;
+    --ink: #17362f;
+    --ink-soft: #566d63;
+    --accent: #bd3f61;
+    --accent-hover: #982d4a;
+    --highlight: #d4a72c;
+    --line: #d9e6dd;
+    --font-body: system-ui, -apple-system, "DM Sans", sans-serif;
 }
 
 /*Base*/
@@ -23,7 +24,7 @@
 body {
     font-family: var(--font-body);
     background: var(--bg);
-    color: var(--link);
+    color: var(--ink);
     line-height: 1.5;
 }
 
@@ -47,7 +48,7 @@ header {
     top: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--line);
-    Z-index: 10;
+    z-index: 10;
 }
 
 nav {
@@ -65,7 +66,7 @@ nav {
 }
 
 .logo span {
-    color: var(--ember);
+    color: var(--accent);
 }
 
 .nav-links {
@@ -74,13 +75,13 @@ nav {
 }
 
 .nav-links a {
-    font-size: 0, 95rem;
-    color: var(--link-soft);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
     transition: color 0.15s;
 }
 
 .nav-links a:hover {
-    color: var(--ember);
+    color: var(--accent);
 }
 
 /*Hero*/
@@ -94,7 +95,7 @@ nav {
     font-size: 0.875rem;
     letter-spacing: 0.15rem;
     text-transform: uppercase;
-    color: var(--clay);
+    color: var(--highlight);
     margin-bottom: 1rem;
 }
 
@@ -106,7 +107,7 @@ nav {
 }
 
 .hero h1 span {
-    color: var(--ember);
+    color: var(--accent);
 }
 
 .hero .subtext {
@@ -120,7 +121,7 @@ nav {
     display: inline-block;
     margin-top: 2rem;
     padding: 0.85rem 1.75rem;
-    background: var(--ember);
+    background: var(--accent);
     color: white;
     font-weight: 600;
     border-radius: 999px;
@@ -128,7 +129,7 @@ nav {
 }
 
 .btn:hover {
-    background: #a5431f;
+    background: var(--accent-hover);
     transform: translateY(-1px);
 }
 
@@ -150,7 +151,7 @@ nav {
     font-size: 1.05rem;
     margin-bottom: 1rem;
     font-weight: 600;
-    color: #a5431f;
+    color: var(--accent);
 }
 
 .about p {
@@ -207,7 +208,7 @@ nav {
     display: inline-block;
     margin-top: 2rem;
     padding: 0.85rem 1.75rem;
-    background: var(--ember);
+    background: var(--accent);
     color: white;
     font-weight: 600;
     border-radius: 999px;
@@ -216,14 +217,14 @@ nav {
 }
 
 .tab-button:hover {
-    background-color: #a5431f;
+    background-color: var(--accent-hover);
     transform: translateY(-1px);
 }
 
 #starters:checked~.menu-btn-group label[for="starters"],
 #mains:checked~.menu-btn-group label[for="mains"],
 #desserts:checked~.menu-btn-group label[for="desserts"] {
-    background: #a5431f;
+    background: var(--accent-hover);
     transform: translateY(-1px);
 }
 
@@ -248,7 +249,7 @@ nav {
 }
 
 .dish-card:hover {
-    box-shadow: 0px 8px 24px rgba(36, 26, 20, 0.08);
+    box-shadow: 0px 8px 24px rgba(23, 54, 47, 0.1);
 }
 
 .dish-image {
@@ -272,7 +273,7 @@ nav {
 .dish-card .price{
     font-size: 0.95rem;
     font-weight:600;
-    color:var(--ember);
+    color:var(--accent);
     margin: 0.5rem 1rem 1rem;
 }
 
@@ -321,7 +322,7 @@ footer {
 }
 
 .footer-brand span {
-    color: var(--ember);
+    color: var(--accent);
 }
 
 .footer-brand p:last-child {
@@ -349,4 +350,72 @@ footer {
 .closetag {
     font-size: 0.8rem;
     font-weight: 400;
+}
+
+/*Responsiveness*/
+@media (max-width: 800px) {
+    .dish {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+
+    .hero,
+    .about,
+    .menu,
+    .reservation {
+        padding: 2.5rem 1rem 3rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtext {
+        font-size: 1rem;
+    }
+
+    .menu-btn-group {
+        flex-wrap: wrap;
+    }
+
+    .tab-button {
+        flex: 1 1 7rem;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .dish,
+    .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .dish-image {
+        height: 200px;
+    }
 }
